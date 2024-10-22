@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr> <th>Id</th><th>Name</th> <th>Price</th>  <th>Date</th><th>Genre</th> </tr>
+                </thead>
+                <tbody *ngFor="let concert of concerts">
+                    <tr>
+                        <td>{{concert.idConcert}}</td>
+                        <td>{{concert.nomConcert}}</td>
+                        <td>{{concert.prixConcert}}</td>
+                        <td>{{concert.dateCreation | date:'dd/MM/yyyy'}}</td>
+                        <td>{{concert.genre?.nomGen}}</td> 
+                        <td><a *ngIf="authService.isAdmin()"
+                             class="btn btn-danger" (click)="supprimerConcert(concert)">Supprimer</a></td>
+                        <td><a *ngIf="authService.isAdmin()"
+                             class="btn btn-success" [routerLink]="['/updateConcert',concert.idConcert]">Modifier</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="container">
+    <div>
+        <h2>Modifier un Concert :</h2>
+    </div>
+    <form>
+        <div  class="col-sm-2 col-md-2 col-lg-2">
+            <label>ID Concert</label>
+            <input readonly type="text" [(ngModel)]="currentConcert.idConcert" name="idConcert" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Nom Concert</label>
+            <input type="text" [(ngModel)]="currentConcert.nomConcert" name="nomConcert" class="form-control">
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label>Prix Concert</label>
+            <input type="number" [(ngModel)]="currentConcert.prixConcert" name="prixConcert" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Date création</label>
+            <input type="date" [ngModel]="currentConcert.dateCreation | date: 'yyyy-MM-dd'" 
+            (ngModelChange)=" currentConcert.dateCreation= $event" name="dateCreation"  class="form-control">
+        </div>
+
+         <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Genre</label>
+            <select class="form-control form-control-lg" id="idGen" name="idGen" [(ngModel)]="updatedGenId">
+                <option *ngFor="let gen of genres" [value]="gen.idGen">
+                    {{gen.nomGen}}
+                </option>  
+            </select>
+        </div> 
+
+        <div class="mt-2">
+            <button type="submit" (click)="updateConcert()" class="btn btn-success">Modifer</button>
+        </div>
+    </form>
+</div>
